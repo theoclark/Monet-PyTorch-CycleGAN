@@ -1,7 +1,7 @@
 import torch
 from torch import nn
-# from torchvision.utils import save_image
-# from torchvision import transforms
+from torchvision.utils import save_image
+from torchvision import transforms
 from PIL import Image
 
 class Downsample_block(nn.Module):
@@ -89,14 +89,14 @@ class Model():
   def load_weights(self, weights_path):
       self.model = torch.load(weights_path, map_location=torch.device(self.device))
 
-  # def predict(self, image_path):
-  #     transform_image = transforms.Compose([
-  #         transforms.Resize(256),
-  #         transforms.CenterCrop(256),
-  #         transforms.ToTensor()
-  #         ])
-  #     input_image = Image.open(image_path)
-  #     input_image = transform_image(input_image)
-  #     save_image(input_image, self.input_image_path)
-  #     output_image = self.model(input_image.unsqueeze(0).to(self.device)).cpu().squeeze().detach()
-  #     save_image(output_image, self.output_path)
+  def predict(self, image_path):
+      transform_image = transforms.Compose([
+          transforms.Resize(256),
+          transforms.CenterCrop(256),
+          transforms.ToTensor()
+          ])
+      input_image = Image.open(image_path)
+      input_image = transform_image(input_image)
+      save_image(input_image, self.input_image_path)
+      output_image = self.model(input_image.unsqueeze(0).to(self.device)).cpu().squeeze().detach()
+      save_image(output_image, self.output_path)
