@@ -8,5 +8,3 @@ Werkzeug
 torch
 torchvision
 Pillow
-shutil
-os
