@@ -7,6 +7,6 @@ peewee
 Werkzeug
 torch
 torchvision
-PIL
+Pillow
 shutil
 os
