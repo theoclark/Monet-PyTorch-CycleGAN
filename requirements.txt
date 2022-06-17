@@ -5,6 +5,4 @@ itsdangerous
 Jinja2
 peewee
 Werkzeug
-torch
-torchvision
 Pillow
