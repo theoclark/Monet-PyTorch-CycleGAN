@@ -1,6 +1,3 @@
-from dotenv import load_dotenv
-load_dotenv()
-
 from flask import Flask, flash, request, redirect, url_for, render_template, send_file
 from Model.model import Model, Generator, Residual_block, Upsample_block, Downsample_block
 import os
@@ -14,9 +11,8 @@ app = Flask(__name__)
 
 model = Model('./Model/G_xy.pt', './static/Images/input_image.jpg', './static/Images/output_image.jpg')
 
-# SECRET_KEY = os.urandom(12)
-app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
-# app.config['SECRET_KEY'] = SECRET_KEY
+SECRET_KEY = os.urandom(12)
+app.config['SECRET_KEY'] = SECRET_KEY
 app.config['UPLOAD_FOLDER'] = image_folder
 
 @app.route("/")
