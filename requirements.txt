@@ -5,5 +5,4 @@ itsdangerous
 Jinja2
 peewee
 Werkzeug
-Pillow
 https://download.pytorch.org/whl/cpu/torch-1.9.0-cp38-none-macosx_10_9_x86_64.whl
