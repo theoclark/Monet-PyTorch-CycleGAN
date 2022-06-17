@@ -9,7 +9,7 @@ allowed_extensions = {'jpg'}
 
 app = Flask(__name__)
 
-model = Model('./Model/G_xy.pt', './static/Images/input_image.jpg', './static/Images/output_image.jpg')
+# model = Model('./Model/G_xy.pt', './static/Images/input_image.jpg', './static/Images/output_image.jpg')
 
 SECRET_KEY = os.urandom(12)
 app.config['SECRET_KEY'] = SECRET_KEY
