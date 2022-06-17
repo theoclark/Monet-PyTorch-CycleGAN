@@ -5,3 +5,8 @@ itsdangerous
 Jinja2
 peewee
 Werkzeug
+torch
+torchvision
+PIL
+shutil
+os
