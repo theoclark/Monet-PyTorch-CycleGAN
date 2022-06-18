@@ -87,7 +87,7 @@ class Model():
       self.load_weights(weights_path)
 
   def load_weights(self, weights_path):
-      self.G_xy.load_state_dict(torch.load(weights_path, map_location=torch.device(self.device)))
+      self.model.load_state_dict(torch.load(weights_path, map_location=torch.device(self.device)))
       # self.model = torch.load(weights_path, map_location=torch.device(self.device))
 
   def predict(self, image_path):
