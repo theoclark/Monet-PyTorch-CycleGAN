@@ -9,7 +9,7 @@ PyTorch implementation of [CycleGAN](https://arxiv.org/abs/1703.10593) to conver
 
 ### Inference
 
-To see the model in action and convert images, head over to this [site](http://monet.theoclark.co.uk/) (hosted on heroku and built using Flask).
+To see the model in action and convert images, head over to [here](http://monet.theoclark.co.uk/) (hosted on heroku and built using Flask).
 
 ### Training
 
