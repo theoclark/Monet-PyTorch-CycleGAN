@@ -79,6 +79,7 @@ class Generator(nn.Module):
 
 class Model():
 
+
   def __init__(self, weights_path, input_image_path, output_image_path):
       self.device = "cuda" if torch.cuda.is_available() else "cpu"
       self.input_image_path = input_image_path
