@@ -9,7 +9,7 @@ allowed_extensions = {'jpg'}
 
 app = Flask(__name__)
 
-model = Model('./Model/G_xy.pt', './static/Images/input_image.jpg', './static/Images/output_image.jpg')
+# model = Model('./Model/G_xy.pt', './static/Images/input_image.jpg', './static/Images/output_image.jpg')
 
 SECRET_KEY = os.urandom(12)
 app.config['SECRET_KEY'] = SECRET_KEY
@@ -35,7 +35,9 @@ def upload_file():
     if uploaded_file.filename != '':
         os.mkdir('./static/Images')
         uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'original_image.jpg'))
+        model = Model('./Model/G_xy.pt', './static/Images/input_image.jpg', './static/Images/output_image.jpg')
         model.predict("./static/Images/original_image.jpg" )
+        model = ""
     return render_template('index.html', show_images=True)
 
 @app.route('/download')
