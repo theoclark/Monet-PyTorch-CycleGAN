@@ -101,6 +101,6 @@ class Model():
       input_image = transform_image(input_image)
       save_image(input_image, self.input_image_path)
       output_image = self.model(input_image.unsqueeze(0).to(self.device)).cpu().squeeze().detach()
-      input_image = ""
+      del(input_image)
       save_image(output_image, self.output_path)
-      output_image = ""
+      del(output_image)
