@@ -84,6 +84,7 @@ class Model():
       self.device = "cuda" if torch.cuda.is_available() else "cpu"
       self.input_image_path = input_image_path
       self.output_path = output_image_path
+      self.weights_path = weights_path
       # self.model = Generator().to(self.device)
       # self.load_weights(weights_path)
 
@@ -100,7 +101,7 @@ class Model():
       input_image = transform_image(input_image)
       save_image(input_image, self.input_image_path)
       self.model = Generator().to(self.device)
-      self.load_weights(weights_path)
+      self.load_weights(self.weights_path)
       output_image = self.model(input_image.unsqueeze(0).to(self.device)).cpu().squeeze().detach()
       del(self.model)
       del(input_image)
