@@ -85,8 +85,8 @@ class Model():
       self.input_image_path = input_image_path
       self.output_path = output_image_path
       self.weights_path = weights_path
-      # self.model = Generator().to(self.device)
-      # self.load_weights(weights_path)
+      self.model = Generator().to(self.device)
+      self.load_weights(weights_path)
 
   def load_weights(self, weights_path):
       self.model.load_state_dict(torch.load(weights_path, map_location=torch.device(self.device)))
@@ -101,12 +101,10 @@ class Model():
           input_image = Image.open(image_path)
           input_image = transform_image(input_image)
           save_image(input_image, self.input_image_path)
-          self.model = Generator().to(self.device)
-          self.load_weights(self.weights_path)
-          input_image = input_image.unsqueeze(0)
-          output_image = self.model(input_image).squeeze_().detach_()
-          # output_image = self.model(input_image.unsqueeze(0).to(self.device)).cpu().squeeze().detach()
-          del(self.model)
+          # self.model = Generator().to(self.device)
+          # self.load_weights(self.weights_path)
+          output_image = self.model(input_image.unsqueeze(0)).squeeze_().detach_()
+          # del(self.model)
           del(input_image)
           save_image(output_image, self.output_path)
           del(output_image)
