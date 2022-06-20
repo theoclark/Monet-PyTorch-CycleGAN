@@ -84,12 +84,11 @@ class Model():
       self.device = "cuda" if torch.cuda.is_available() else "cpu"
       self.input_image_path = input_image_path
       self.output_path = output_image_path
-      self.model = Generator().to(self.device)
+      # self.model = Generator().to(self.device)
       self.load_weights(weights_path)
 
   def load_weights(self, weights_path):
       self.model.load_state_dict(torch.load(weights_path, map_location=torch.device(self.device)))
-      # self.model = torch.load(weights_path, map_location=torch.device(self.device))
 
   def predict(self, image_path):
       transform_image = transforms.Compose([
@@ -100,7 +99,9 @@ class Model():
       input_image = Image.open(image_path)
       input_image = transform_image(input_image)
       save_image(input_image, self.input_image_path)
+      self.model = Generator().to(self.device)
       output_image = self.model(input_image.unsqueeze(0).to(self.device)).cpu().squeeze().detach()
+      del(self.model)
       del(input_image)
       save_image(output_image, self.output_path)
       del(output_image)
