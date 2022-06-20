@@ -102,7 +102,7 @@ class Model():
       save_image(input_image, self.input_image_path)
       self.model = Generator().to(self.device)
       self.load_weights(self.weights_path)
-      output_image = self.model(input_image.unsqueeze(0).to(self.device))
+      output_image = self.model(input_image.unsqueeze(0)))
       # output_image = self.model(input_image.unsqueeze(0).to(self.device)).cpu().squeeze().detach()
       del(self.model)
       del(input_image)
